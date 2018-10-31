@@ -1,0 +1,4 @@
+com\spring\boot\controller\BankController.class
+com\spring\boot\dao\BankDao.class
+com\spring\boot\model\Bank.class
+com\spring\boot\repository\BankRepository.class
