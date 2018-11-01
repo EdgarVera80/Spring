@@ -6,7 +6,7 @@ import com.example.spring.boot.model.Bank;
 
 
 public interface BankService {
-	Bank findById(long id);
+	Bank findById(Integer id);
 	Bank findByName(String name);
 	List<Bank> findAllBanks();
 }

@@ -1,0 +1,8 @@
+/**
+ * 
+ */
+
+function mensaje(){
+	alert("HOLA");
+}
+

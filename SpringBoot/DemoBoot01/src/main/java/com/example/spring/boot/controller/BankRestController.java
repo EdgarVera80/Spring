@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,14 +20,21 @@ public class BankRestController {
 	@Autowired
 	private BankService bankService;
 	
-	@RequestMapping(value="/banks", method=RequestMethod.GET)
+	@RequestMapping(value="/services/banks", method=RequestMethod.GET)
 	public ResponseEntity<List<Bank>> listAllBanks(){
 		List<Bank> banks=bankService.findAllBanks();
 		if(banks.isEmpty()) {
-			System.out.println("No Bank was found!");
 			return new ResponseEntity<List<Bank>>(HttpStatus.NO_CONTENT);
 		}
-		System.out.println("Total Banks: " + banks.size());
 		return new ResponseEntity<List<Bank>>(banks,HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/services/bank/{id}") //Otra forma de Get
+	public ResponseEntity<Bank> getBankById(@PathVariable("id") Integer bankId){
+		Bank bank=bankService.findById(bankId);
+		if(bank==null) {
+			return new ResponseEntity<Bank>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<Bank>(bank,HttpStatus.OK);
 	}
 }

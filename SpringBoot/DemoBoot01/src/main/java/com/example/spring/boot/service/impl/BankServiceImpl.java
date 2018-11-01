@@ -12,8 +12,6 @@ import com.example.spring.boot.model.Bank;
 import com.example.spring.boot.repository.BankRepository;
 import com.example.spring.boot.service.BankService;
 
-import sun.net.ftp.FtpClient.TransferType;
-
 @Service
 public class BankServiceImpl implements BankService {
 	
@@ -21,9 +19,8 @@ public class BankServiceImpl implements BankService {
 	private BankRepository bankRepository;
 	
 	@Override
-	public Bank findById(long id) {
-		bankRepository.findById(id);
-		return null;
+	public Bank findById(Integer id) {
+		return bankRepository.findByBankId(id);
 	}
 
 	@Transactional(value=TxType.NEVER)
