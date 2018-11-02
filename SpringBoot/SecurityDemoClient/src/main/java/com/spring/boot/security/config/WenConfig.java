@@ -42,6 +42,7 @@ public class WenConfig extends WebMvcConfigurerAdapter {
 	public RequestContextListener requestContextListener() {
 		return new RequestContextListener();
 	}
+	
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
